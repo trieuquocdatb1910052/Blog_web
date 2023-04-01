@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import AddComment from "../../components/comments/AddComment";
 import CommentList from "../../components/comments/CommentList";
 import swal from "sweetalert";
+import UpdetePostModel from "./UpdatePostModel";
 
 const PostDetails = () => {
 
@@ -13,6 +14,7 @@ const PostDetails = () => {
     const post = posts.find(p => p._id === parseInt(id));
 
     const [file, setFile] = useState(null);
+    const [updatePost, setUpdatePost] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -80,12 +82,13 @@ const PostDetails = () => {
                     <small>{post.likes.length} likes</small>
                 </div>
                 <div>
-                    <i className="bi bi-pencil-square"></i>
+                    <i onClick={() => setUpdatePost(true)} className="bi bi-pencil-square"></i>
                     <i onClick={deletePostHandler} className="bi bi-trash-fill"></i>
                 </div>
             </div>
             <AddComment />
             <CommentList />
+            {updatePost && <UpdetePostModel post={post} setUpdatePost={setUpdatePost} />}
         </section>
     );
 }
