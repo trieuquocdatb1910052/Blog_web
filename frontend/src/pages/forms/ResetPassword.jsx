@@ -20,7 +20,7 @@ const ResetPassword = () => {
             <form onSubmit={formSubmitHandler} className="form">
                 <div className="form-group">
                     <label htmlFor="password" className="form-label">New Password</label>
-                    <input value={password} onChange={(e) => setPassword(e.target.value)} type="text" className="form-input" id="password" placeholder="Enter your new password" />
+                    <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-input" id="password" placeholder="Enter your new password" />
                 </div>
                 <button className="form-btn" type="submit">Submit</button>
             </form>

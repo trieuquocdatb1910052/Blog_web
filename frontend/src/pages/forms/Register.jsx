@@ -33,7 +33,7 @@ const Register = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="password" className="form-label">Password</label>
-                    <input value={password} onChange={(e) => setPassword(e.target.value)} type="text" className="form-input" id="password" placeholder="Enter your password" />
+                    <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-input" id="password" placeholder="Enter your password" />
                 </div>
                 <button className="form-btn" type="submit">Register</button>
             </form>
