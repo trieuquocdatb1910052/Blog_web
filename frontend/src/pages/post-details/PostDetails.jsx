@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import AddComment from "../../components/comments/AddComment";
 import CommentList from "../../components/comments/CommentList";
 import swal from "sweetalert";
-import UpdetePostModel from "./UpdatePostModel";
+import UpdetePostModal from "./UpdatePostModal";
 
 const PostDetails = () => {
 
@@ -88,7 +88,7 @@ const PostDetails = () => {
             </div>
             <AddComment />
             <CommentList />
-            {updatePost && <UpdetePostModel post={post} setUpdatePost={setUpdatePost} />}
+            {updatePost && <UpdetePostModal post={post} setUpdatePost={setUpdatePost} />}
         </section>
     );
 }

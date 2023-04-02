@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./update-post.css";
 import { toast } from "react-toastify";
 
-const UpdetePostModel = ({ setUpdatePost, post }) => {
+const UpdetePostModal = ({ setUpdatePost, post }) => {
 
     const [title, setTitle] = useState(post.title);
     const [description, setDescription] = useState(post.description);
@@ -40,4 +40,4 @@ const UpdetePostModel = ({ setUpdatePost, post }) => {
     );
 }
  
-export default UpdetePostModel;
+export default UpdetePostModal;

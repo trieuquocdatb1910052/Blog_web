@@ -8,7 +8,9 @@ import CreatePosts from "./pages/create-post/CreatePost.jsx"
 import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
 import Footer from "./components/footer/Footer";
 import PostDetails from "./pages/post-details/PostDetails";
+import Category from "./pages/category/Category";
 import { ToastContainer } from "react-toastify";
+import Profile from "./pages/profile/Profile";
 
 function App() {
   return (
@@ -19,9 +21,13 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
-        <Route path="/posts" element={<PostPage/>} />
-        <Route path="/posts/create-post" element={<CreatePosts/>} />
-        <Route path="/posts/details/:id" element={<PostDetails/>} />
+        <Route path="/profile/:id" element={<Profile/>} />
+        <Route path="posts">
+          <Route index element={<PostPage/>} />
+          <Route path="create-post" element={<CreatePosts/>} />
+          <Route path="details/:id" element={<PostDetails/>} />
+          <Route path="categories/:category" element={<Category/>} />
+        </Route>
         <Route path="/admin-dashboard" element={<AdminDashboard/>} />
       </Routes>
       <Footer/>
