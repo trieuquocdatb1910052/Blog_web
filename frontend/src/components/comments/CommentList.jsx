@@ -4,28 +4,33 @@ import swal from "sweetalert";
 import UpdeteCommentModel from "./UpdateCommentModel";
 import Moment from "react-moment";
 import { useDispatch, useSelector } from "react-redux";
+import { deleteComment } from "../../redux/apiCalls/commentApiCall";
 
 const CommentList = ({ comments }) => {
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
 
   const [updateComment, setUpdateComment] = useState(false);
+  const [commentForUpdate, setCommentForUpdate] = useState(null);
+
+  //Update Comment Handler
+  const updateCommentHandler = (comment) => {
+    setCommentForUpdate(comment);
+    setUpdateComment(true);
+  };
 
   //Delete Comment Handler
-  const deleteCommentHandler = () => {
+  const deleteCommentHandler = (commentId) => {
     swal({
       title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this imaginary file!",
+      text: "Once deleted, you will not be able to recover this comment!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        swal("Comment has been deleted!", {
-          icon: "success",
-        });
-      } else {
-        swal("Something went wrong!");
-      }
+    }).then((isOk) => {
+      if (isOk) {
+        dispatch(deleteComment(commentId));
+      } 
     });
   };
 
@@ -39,19 +44,19 @@ const CommentList = ({ comments }) => {
             <div className="comment-item-time">
               <Moment fromNow ago>
                 {comment.createdAt}
-              </Moment>
-              {" "} ago
+              </Moment>{" "}
+              ago
             </div>
           </div>
           <p className="comment-item-text">{comment.text}</p>
           {user?._id === comment.user && (
             <div className="comment-item-icon-wrapper">
               <i
-                onClick={() => setUpdateComment(true)}
+                onClick={() => updateCommentHandler(comment)}
                 className="bi bi-pencil-square"
               ></i>
               <i
-                onClick={deleteCommentHandler}
+                onClick={() => deleteCommentHandler(comment?._id)}
                 className="bi bi-trash-fill"
               ></i>
             </div>
@@ -59,7 +64,10 @@ const CommentList = ({ comments }) => {
         </div>
       ))}
       {updateComment && (
-        <UpdeteCommentModel setUpdateComment={setUpdateComment} />
+        <UpdeteCommentModel
+          commentForUpdate={commentForUpdate}
+          setUpdateComment={setUpdateComment}
+        />
       )}
     </div>
   );

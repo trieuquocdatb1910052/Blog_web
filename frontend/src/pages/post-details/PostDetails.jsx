@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import "./post-details.css";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -8,14 +8,16 @@ import swal from "sweetalert";
 import UpdetePostModal from "./UpdatePostModal";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deletePost,
   fetchSinglePost,
   toggleLikePost,
+  updatePostImage,
 } from "../../redux/apiCalls/postApiCall";
 
 const PostDetails = () => {
   const dispatch = useDispatch();
-  const { post } = useSelector(state => state.post);
-  const { user } = useSelector(state => state.auth);
+  const { post } = useSelector((state) => state.post);
+  const { user } = useSelector((state) => state.auth);
 
   const { id } = useParams();
 
@@ -24,7 +26,7 @@ const PostDetails = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(fetchSinglePost(id))
+    dispatch(fetchSinglePost(id));
   }, [id]);
 
   // Update Image Submit Handler
@@ -32,24 +34,25 @@ const PostDetails = () => {
     e.preventDefault();
     if (!file) return toast.warning("No file!");
 
-    console.log("Image uploaded successfully");
+    const formData = new FormData();
+    formData.append("image", file);
+    dispatch(updatePostImage(formData, post?._id));
   };
+
+  const navigate = useNavigate();
 
   //Delete Post Handler
   const deletePostHandler = () => {
     swal({
       title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this imaginary file!",
+      text: "Once deleted, you will not be able to recover this post!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        swal("Post has been deleted!", {
-          icon: "success",
-        });
-      } else {
-        swal("Something went wrong!");
+    }).then((isOk) => {
+      if (isOk) {
+        dispatch(deletePost(post?._id));
+        navigate(`/profile/${user?._id}`);
       }
     });
   };
@@ -109,24 +112,32 @@ const PostDetails = () => {
           {user && (
             <i
               onClick={() => dispatch(toggleLikePost(post?._id))}
-              className={post?.likes.includes(user?._id)
-              ? "bi bi-hand-thumbs-up-fill"
-              : "bi bi-hand-thumbs-up"}
+              className={
+                post?.likes.includes(user?._id)
+                  ? "bi bi-hand-thumbs-up-fill"
+                  : "bi bi-hand-thumbs-up"
+              }
             ></i>
           )}
           <small>{post?.likes.length} likes</small>
         </div>
-        {user?._id === post?.user?._id && (
-          <div>
-            <i
-              onClick={() => setUpdatePost(true)}
-              className="bi bi-pencil-square"
-            ></i>
-            <i onClick={deletePostHandler} className="bi bi-trash-fill"></i>
-          </div>
-        )}
+        <div>
+          {user?._id === post?.user?._id && (
+            <div>
+              <i
+                onClick={() => setUpdatePost(true)}
+                className="bi bi-pencil-square"
+              ></i>
+              <i onClick={deletePostHandler} className="bi bi-trash-fill"></i>
+            </div>
+          )}
+        </div>
       </div>
-      <AddComment />
+      {user ? (
+        <AddComment postId={post?._id} />
+      ) : (
+        <p className="post-details-info-write">to write a comment you should login first</p>
+      )}
       <CommentList comments={post?.comments} />
       {updatePost && (
         <UpdetePostModal post={post} setUpdatePost={setUpdatePost} />

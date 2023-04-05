@@ -116,17 +116,17 @@ const { Comment } = require("../models/Comment");
 
     if(req.user.isAdmin || req.user.id === post.user.toString()) {
         await Post.findByIdAndDelete(req.params.id);
-        await cloudinaryUploadImage(post.image.publicId);
+        await cloudinaryRemoveImage(post.image.publicId);
 
         // Delete all comments that belong to this post
         await Comment.deleteMany({ postId: post._id });
 
         res.status(200).json({
-            message: "post has been deleted successfully",
+            message: "Post has been deleted successfully",
             postId: post._id
         });
     } else {
-        res.status(403).json({ message: "access denied, forbidden" });
+        res.status(403).json({ message: "Access denied, forbidden" });
     }
  });
 
