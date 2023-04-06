@@ -13,7 +13,7 @@ const PostItem = ({ post, username, userId }) => {
       <div className="post-item-info-wrapper">
         <div className="post-item-info">
           <div className="post-item-author">
-            <strong>Author: </strong>
+            <strong>Tác giả: </strong>
             <Link className="post-item-username" to={profileLink}>
               {username ? username : post?.user.username}
             </Link>
@@ -33,15 +33,9 @@ const PostItem = ({ post, username, userId }) => {
         </div>
         <p className="post-item-description">
           {post?.description}&nbsp;
-          You tell me, what’s better—describing the simple car sitting in your
-          all-pavement parking lot, or the one speeding down the interstate? Or
-          perhaps the one slow creeping down a crowded downtown street on a
-          Friday night, heads turning and eyes glued? Or perhaps the one slow
-          creeping down a crowded downtown street on a Friday night, heads
-          turning and eyes glued?
         </p>
         <Link className="post-item-link" to={`/posts/details/${post?._id}`}>
-          Read More...
+          Đọc thêm...
         </Link>
       </div>
     </div>

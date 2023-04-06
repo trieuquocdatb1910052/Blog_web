@@ -40,14 +40,14 @@ const HeaderRight = () => {
                   onClick={() => setDropdown(false)}
                 >
                   <i className="bi bi-file-person"></i>
-                  <span>Profile</span>
+                  <span>Hồ sơ</span>
                 </Link>
                 <div
                   onClick={logoutHandler}
                   className="header-dropdown-item"
                 >
                   <i className="bi bi-box-arrow-in-left"></i>
-                  <span>Logout</span>
+                  <span>Đăng xuất</span>
                 </div>
               </div>
             )}
@@ -57,11 +57,11 @@ const HeaderRight = () => {
         <>
           <Link to="/login" className="header-right-link">
             <i className="bi bi-box-arrow-in-right"></i>
-            <span>Login</span>
+            <span>Đăng nhập</span>
           </Link>
           <Link to="register" className="header-right-link">
             <i className="bi bi-person-plus"></i>
-            <span>Register</span>
+            <span>Đăng kí</span>
           </Link>
         </>
       )}

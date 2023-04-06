@@ -43,7 +43,7 @@ function App() {
           element={!user ? <VerifyEmail /> : <Navigate to="/" />}
         />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/reset-password/:userId/:token" element={<ResetPassword />} />
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="posts">
           <Route index element={<PostPage />} />

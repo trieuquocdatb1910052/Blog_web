@@ -24,7 +24,7 @@ export function createCategory(newCategory) {
         },
       });
       dispatch(categoryActions.addCategory(data));
-      toast.success("category created successfully");
+      toast.success("Danh mục được tạo thành công");
     } catch (error) {
       toast.error(error.response.data.message);
     }

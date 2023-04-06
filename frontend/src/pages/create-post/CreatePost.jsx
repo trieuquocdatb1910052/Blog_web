@@ -20,11 +20,11 @@ const CreatePost = () => {
   //Form Submit Handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    if (title.trim() === "") return toast.error("Post Title is required");
-    if (category.trim() === "") return toast.error("Post Category is required");
+    if (title.trim() === "") return toast.error("Tiêu đề bài viết là bắt buộc");
+    if (category.trim() === "") return toast.error("Danh mục bài viết là bắt buộc");
     if (description.trim() === "")
-      return toast.error("Post Description is required");
-    if (!file) return toast.error("Post Image is required");
+      return toast.error("Mô tả bài viết là bắt buộc");
+    if (!file) return toast.error("Đăng hình ảnh là bắt buộc");
 
     const formData = new FormData();
     formData.append("image", file);
@@ -48,11 +48,11 @@ const CreatePost = () => {
 
   return (
     <section className="create-post">
-      <h1 className="create-post-title"> Create New Post</h1>
+      <h1 className="create-post-title"> Tạo bài viết mới</h1>
       <form onSubmit={formSubmitHandler} className="create-post-form">
         <input
           type="text"
-          placeholder="Post title"
+          placeholder="Tiêu đề bài viết"
           className="create-post-input"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -63,7 +63,7 @@ const CreatePost = () => {
           onChange={(e) => setCategory(e.target.value)}
         >
           <option disabled value="">
-            Section A Category
+            Chọn danh mục bài viết
           </option>
           {categories.map((category) => (
             <option key={category._id} value={category.title}>
@@ -74,7 +74,7 @@ const CreatePost = () => {
         <textarea
           className="create-post-textarea"
           rows="5"
-          placeholder="Post Description"
+          placeholder="Mô tả bài viết"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
@@ -95,7 +95,7 @@ const CreatePost = () => {
               visible={true}
             />
           ) : (
-            "Create"
+            "TẠO"
           )}
         </button>
       </form>

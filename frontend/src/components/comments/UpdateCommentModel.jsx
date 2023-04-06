@@ -12,7 +12,7 @@ const UpdeteCommentModel = ({ setUpdateComment, commentForUpdate }) => {
     //Form Submit Handler
     const formSubmitHandler = (e) => {
         e.preventDefault();
-        if(text.trim() === "") return toast.error("Please write something");
+        if(text.trim() === "") return toast.error("Hãy viết một cái gì đó");
 
         dispatch(updateComment(commentForUpdate?._id, {text}));
         setUpdateComment(false);
@@ -24,9 +24,9 @@ const UpdeteCommentModel = ({ setUpdateComment, commentForUpdate }) => {
                 <abbr title="close">
                     <i onClick={() => setUpdateComment(false)} className="bi bi-x-circle-fill update-comment-form-close"></i>
                 </abbr>
-                <h1 className="update-comment-title">Edit Comment</h1>
+                <h1 className="update-comment-title">Sửa Bình Luận</h1>
                 <input type="text" className="update-comment-input" value={text} onChange={(e) => setText(e.target.value)} />
-                <button type="submit" className="update-comment-btn">Edit Comment</button>
+                <button type="submit" className="update-comment-btn">Sửa</button>
             </form>
         </div>
     );

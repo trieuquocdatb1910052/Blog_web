@@ -10,10 +10,10 @@ function verifyToken(req, res, next) {
             req.user =decodedPayload;
             next();
         } catch (error) {
-            return res.status(401).json({ message: "invalid token, access denied"});
+            return res.status(401).json({ message: "Mã thông báo không hợp lệ, quyền truy cập bị từ chối"});
         }
     } else {
-        return res.status(401).json({ message: "no token provided, access denied"});
+        return res.status(401).json({ message: "Không cung cấp mã thông báo, quyền truy cập bị từ chối"});
     }
 }
 
@@ -23,7 +23,7 @@ function verifyTokenAndAdmin(req, res, next) {
         if(req.user.isAdmin) {
             next();
         } else {
-            return res.status(403).json({ message: "not allowed, only admin" });
+            return res.status(403).json({ message: "Không được phép, chỉ quản trị viên" });
         }
     });
 }
@@ -34,7 +34,7 @@ function verifyTokenAndOnlyUser(req, res, next) {
         if(req.user.id === req.params.id) {
             next();
         } else {
-            return res.status(403).json({ message: "not allowed, only user himself" });
+            return res.status(403).json({ message: "Không được phép, chỉ người dùng mình" });
         }
     });
 }
@@ -45,7 +45,7 @@ function verifyTokenAndAuthorization(req, res, next) {
         if(req.user.id === req.params.id || req.user.isAdmin) {
             next();
         } else {
-            return res.status(403).json({ message: "not allowed, only user himself or admin" });
+            return res.status(403).json({ message: "Không được phép, chỉ người dùng hoặc quản trị viên" });
         }
     });
 }

@@ -10,10 +10,10 @@ const Navbar = ({ toggle, setToggle }) => {
     >
       <ul className="nav-links">
         <Link to="/" onClick={() => setToggle(false)} className="nav-link">
-          <i className="bi bi-house"></i>Home
+          <i className="bi bi-house"></i>Trang chủ
         </Link>
         <Link to="/posts" onClick={() => setToggle(false)} className="nav-link">
-          <i className="bi bi-stickies"></i>Posts
+          <i className="bi bi-stickies"></i>Bài viết
         </Link>
         {user && (
           <Link
@@ -21,7 +21,7 @@ const Navbar = ({ toggle, setToggle }) => {
             onClick={() => setToggle(false)}
             className="nav-link"
           >
-            <i className="bi bi-journal-plus"></i>Create
+            <i className="bi bi-journal-plus"></i>Tạo bài viết
           </Link>
         )}
         {user?.isAdmin && (
@@ -30,7 +30,7 @@ const Navbar = ({ toggle, setToggle }) => {
             onClick={() => setToggle(false)}
             className="nav-link"
           >
-            <i className="bi bi-person-check"></i>Admin Dashboard
+            <i className="bi bi-person-check"></i>Quản trị viên
           </Link>
         )}
       </ul>

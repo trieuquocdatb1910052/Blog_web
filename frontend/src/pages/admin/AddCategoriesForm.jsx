@@ -12,7 +12,7 @@ const AddCategoryForm = () => {
     // Form Submit Handler
     const formSubmitHandler = (e) => {
         e.preventDefault();
-        if(title.trim() === "") return toast.error("Category Title is required");
+        if(title.trim() === "") return toast.error("Tiêu đề danh mục là bắt buộc");
 
         dispatch(createCategory({title}));
         setTitle("");
@@ -20,14 +20,14 @@ const AddCategoryForm = () => {
 
     return ( 
         <div className="add-category">
-            <h6 className="add-category-title">Add New Category</h6>
+            <h6 className="add-category-title">Thêm danh mục mới</h6>
             <form onSubmit={formSubmitHandler}>
                 <div className="add-category-form-group">
-                    <label htmlFor="title">Category Title</label>
-                    <input type="text" id="title" placeholder="Enter Category Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    <label htmlFor="title">Tiêu đề danh mục</label>
+                    <input type="text" id="title" placeholder="Nhập tiêu đề danh mục " value={title} onChange={(e) => setTitle(e.target.value)} />
                 </div>
                 <button className="add-category-btn" type="submit">
-                    Add
+                    Thêm
                 </button>
             </form>
         </div>

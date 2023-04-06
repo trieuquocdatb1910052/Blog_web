@@ -14,7 +14,7 @@ const Sidebar = () => {
 
     return (
         <div className="sidebar">
-            <h5 className="sidebar-title">CATEGORIES</h5>
+            <h5 className="sidebar-title">Danh mục bài viết</h5>
             <ul className="sidebar-links"> 
                 {categories.map(category => 
                     <Link className="sidebar-link" key={category._id} to={`/posts/categories/${category.title}`}>

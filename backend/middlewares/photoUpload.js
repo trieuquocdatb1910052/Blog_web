@@ -21,7 +21,7 @@ const multer = require("multer");
         if(file.mimetype.startsWith("image")) {
             cb(null, true);
         } else {
-            cb({ message: "Unsupported file format" }, false);
+            cb({ message: "Định dạng tập tin không được hỗ trợ" }, false);
         }
     },
     limits: { fileSize: 1024 * 1024 } //1 megabyte

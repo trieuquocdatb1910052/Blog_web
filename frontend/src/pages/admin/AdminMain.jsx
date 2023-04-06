@@ -26,11 +26,11 @@ const AdminMain = () => {
     <div className="admin-main">
       <div className="admin-main-header">
         <div className="admin-main-card">
-          <h5 className="admin-card-title">Users</h5>
+          <h5 className="admin-card-title">Người dùng</h5>
           <div className="admin-card-count">{usersCount}</div>
           <div className="admin-card-link-wrapper">
             <Link to="/admin-dashboard/users-table" className="admin-card-link">
-              See all users
+            Xem tất cả người dùng
             </Link>
             <div className="admin-card-icon">
               <i className="bi bi-person"></i>
@@ -38,11 +38,11 @@ const AdminMain = () => {
           </div>
         </div>
         <div className="admin-main-card">
-          <h5 className="admin-card-title">Posts</h5>
+          <h5 className="admin-card-title">Bài viết</h5>
           <div className="admin-card-count">{postsCount}</div>
           <div className="admin-card-link-wrapper">
             <Link to="/admin-dashboard/posts-table" className="admin-card-link">
-              See all posts
+              Xem tất cả bài viết
             </Link>
             <div className="admin-card-icon">
               <i className="bi bi-file-post"></i>
@@ -50,14 +50,14 @@ const AdminMain = () => {
           </div>
         </div>
         <div className="admin-main-card">
-          <h5 className="admin-card-title">Categories</h5>
+          <h5 className="admin-card-title">Danh mục</h5>
           <div className="admin-card-count">{categories.length}</div>
           <div className="admin-card-link-wrapper">
             <Link
               to="/admin-dashboard/categories-table"
               className="admin-card-link"
             >
-              See all categories
+              Xem tất cả danh mục
             </Link>
             <div className="admin-card-icon">
               <i className="bi bi-tag-fill"></i>
@@ -65,14 +65,14 @@ const AdminMain = () => {
           </div>
         </div>
         <div className="admin-main-card">
-          <h5 className="admin-card-title">Comments</h5>
+          <h5 className="admin-card-title">Bình luận</h5>
           <div className="admin-card-count">{comments.length}</div>
           <div className="admin-card-link-wrapper">
             <Link
               to="/admin-dashboard/comments-table"
               className="admin-card-link"
             >
-              See all comments
+              Xem tất cả bình luận
             </Link>
             <div className="admin-card-icon">
               <i className="bi bi-chat-left-text"></i>

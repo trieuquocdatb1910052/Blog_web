@@ -21,15 +21,15 @@ const Category = () => {
       {postsCate.length === 0 ? (
         <>
           <h1 className="category-not-found">
-            Posts with <span>{category}</span> category not found
+            Không tìm thấy bài đăng có danh mục <span>{category}</span>
           </h1>
           <Link to="/posts" className="category-not-found-link">
-            Go to posts page
+            Tới trang bài viết
           </Link>
         </>
       ) : (
         <>
-          <h1 className="category-title">Posts based on {category}</h1>
+          <h1 className="category-title">Bài viết dựa trên {category}</h1>
           <PostList posts={postsCate} />
         </>
       )}

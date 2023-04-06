@@ -96,7 +96,7 @@ export function updatePostImage(newPost, postId) {
           "Content-Type" : "multipart/form-data"
         }
       });
-      toast.success("New post image uploaded successfully");
+      toast.success("Hình ảnh bài đăng mới được tải lên thành công");
     } catch (error) {
       toast.error(error.response.data.message);
     }

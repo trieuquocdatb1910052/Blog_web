@@ -31,11 +31,11 @@ const UpdeteProfileModal = ({ setUpdateProfile, profile }) => {
                 <abbr title="close">
                     <i onClick={() => setUpdateProfile(false)} className="bi bi-x-circle-fill update-profile-form-close"></i>
                 </abbr>
-                <h1 className="update-profile-title">Update Your Profile</h1>
-                <input type="text" className="update-profile-input" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                <input type="text" className="update-profile-input" placeholder="Bio" value={bio} onChange={(e) => setBio(e.target.value)} />
-                <input type="text" className="update-profile-input" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                <button type="submit" className="update-profile-btn">Update Profile</button>
+                <h1 className="update-profile-title">Cập nhật hồ sơ của bạn</h1>
+                <input type="text" className="update-profile-input" placeholder="Tên người dùng" value={username} onChange={(e) => setUsername(e.target.value)} />
+                <input type="text" className="update-profile-input" placeholder="Giới thiệu" value={bio} onChange={(e) => setBio(e.target.value)} />
+                <input type="text" className="update-profile-input" placeholder="Mật khẩu" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <button type="submit" className="update-profile-btn">CẬP NHẬT</button>
             </form>
         </div>
     );

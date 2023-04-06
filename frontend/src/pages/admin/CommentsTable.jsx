@@ -16,8 +16,8 @@ const CommentsTable = () => {
     //Delete Comment Handler
     const deleteCommentHandler = (commentId) => {
         swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this comment!",
+            title: "Bạn có chắc không?",
+            text: "Sau khi xóa, bạn sẽ không thể khôi phục bình luận này!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -33,14 +33,14 @@ const CommentsTable = () => {
         <section className="table-container">
             <AdminSidebar/>
             <div className="table-wrapper">
-                <h1 className="table-title">Comments</h1>
+                <h1 className="table-title">Bình luận</h1>
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>Count</th>
-                            <th>User</th>
-                            <th>Comment</th>
-                            <th>Action</th>
+                            <th>STT</th>
+                            <th>Người dùng</th>
+                            <th>Bình luận</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,7 +56,7 @@ const CommentsTable = () => {
                                 <td>{item.text}</td>
                                 <td>
                                     <div className="table-button-group">
-                                        <button onClick={() => deleteCommentHandler(item._id)}>Delete Comment</button>
+                                        <button onClick={() => deleteCommentHandler(item._id)}>Xoá</button>
                                     </div>
                                 </td>
                             </tr>

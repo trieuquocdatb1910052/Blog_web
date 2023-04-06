@@ -14,7 +14,7 @@ const { Comment } = require("../models/Comment");
  module.exports.createPostCtrl = asyncHandler(async (req, res) => {
     //Validation for image
     if(!req.file) {
-        return res.status(400).json({ message: "no image provided" });
+        return res.status(400).json({ message: "Không có hình ảnh được cung cấp" });
     }
 
     //Validate for data
@@ -86,7 +86,7 @@ const { Comment } = require("../models/Comment");
         .populate("user", ["-password"])
         .populate("comments");
     if(!post) {
-        return res.status(404).json({ message: 'post not found' });
+        return res.status(404).json({ message: 'Không tìm thấy bài đăng' });
     }
     res.status(200).json(post);
  });
@@ -111,7 +111,7 @@ const { Comment } = require("../models/Comment");
  module.exports.deletePostsCtrl = asyncHandler(async (req, res) => {
     const post = await Post.findById(req.params.id);
     if(!post) {
-        return res.status(404).json({ message: 'post not found' });
+        return res.status(404).json({ message: 'Không tìm thấy bài đăng' });
     }
 
     if(req.user.isAdmin || req.user.id === post.user.toString()) {
@@ -122,11 +122,11 @@ const { Comment } = require("../models/Comment");
         await Comment.deleteMany({ postId: post._id });
 
         res.status(200).json({
-            message: "Post has been deleted successfully",
+            message: "Đã xóa bài đăng thành công",
             postId: post._id
         });
     } else {
-        res.status(403).json({ message: "Access denied, forbidden" });
+        res.status(403).json({ message: "Truy cập bị từ chối, bị cấm" });
     }
  });
 
@@ -146,12 +146,12 @@ const { Comment } = require("../models/Comment");
     // Get the post from DB and check if post exist
     const post = await Post.findById(req.params.id);
     if(!post) {
-        return res.status(404).json({ message: 'post not found' });
+        return res.status(404).json({ message: 'Không tìm thấy bài đăng' });
     }
 
     // chech if this post belong to logged in user 
     if(req.user.id != post.user.toString()) {
-        return res.status(403).json({ message: 'access denied, you are not allowed' });
+        return res.status(403).json({ message: 'Truy cập bị từ chối, bạn không được phép' });
     } 
 
     // Update post 
@@ -176,18 +176,18 @@ const { Comment } = require("../models/Comment");
  module.exports.updatePostImageCtrl = asyncHandler(async (req, res) => {
     // Validation
     if(!req.file) {
-        return res.status(400).json({ message: "no image provided" });
+        return res.status(400).json({ message: "Không có hình ảnh được cung cấp" });
     }
 
     // Get the post from DB and check if post exist
     const post = await Post.findById(req.params.id);
     if(!post) {
-        return res.status(404).json({ message: 'post not found' });
+        return res.status(404).json({ message: 'Không tìm thấy bài đăng' });
     }
 
     // Chech if this post belong to logged in user 
     if(req.user.id != post.user.toString()) {
-        return res.status(403).json({ message: 'access denied, you are not allowed' });
+        return res.status(403).json({ message: 'Truy cập bị từ chối, bạn không được phép' });
     } 
 
     // Delete post image
@@ -226,7 +226,7 @@ const { Comment } = require("../models/Comment");
 
     let post = await Post.findById(postId);
     if(!post) {
-        return res.status(404).json({ message: "post not found" });
+        return res.status(404).json({ message: "Không tìm thấy bài đăng" });
     }
 
     const isPostAlreadyLiked = post.likes.find(

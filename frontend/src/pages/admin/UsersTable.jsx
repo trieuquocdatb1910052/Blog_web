@@ -17,8 +17,8 @@ const UsersTable = () => {
   //Delete User Handler
   const deleteUserHandler = (userId) => {
     swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this user!",
+      title: "Bạn có chắc không?",
+      text: "Sau khi xóa, bạn sẽ không thể khôi phục người dùng này!!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -33,14 +33,14 @@ const UsersTable = () => {
     <section className="table-container">
       <AdminSidebar />
       <div className="table-wrapper">
-        <h1 className="table-title">Users</h1>
+        <h1 className="table-title">Người dùng</h1>
         <table className="table">
           <thead>
             <tr>
-              <th>Count</th>
-              <th>User</th>
+              <th>STT</th>
+              <th>Người dùng</th>
               <th>Email</th>
-              <th>Action</th>
+              <th>Hành động</th>
             </tr>
           </thead>
           <tbody>
@@ -61,9 +61,9 @@ const UsersTable = () => {
                 <td>
                   <div className="table-button-group">
                     <button>
-                      <Link to={`/profile/${item._id}`}>View Profile</Link>
+                      <Link to={`/profile/${item._id}`}>Xem hồ sơ</Link>
                     </button>
-                    <button onClick={() => deleteUserHandler(item._id)}>Delete User</button>
+                    <button onClick={() => deleteUserHandler(item._id)}>Xoá</button>
                   </div>
                 </td>
               </tr>

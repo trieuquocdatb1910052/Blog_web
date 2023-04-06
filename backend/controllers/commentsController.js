@@ -45,14 +45,14 @@ const { User } = require("../models/User");
  module.exports.deleteCommentCtrl = asyncHandler(async (req, res) => {
     const comment = await Comment.findById(req.params.id);
     if(!comment) {
-        return res.status(404).json({ message: "comment not found" });
+        return res.status(404).json({ message: "Bình luận không tìm thấy" });
     }
 
     if(req.user.isAdmin || req.user.id === comment.user.toString()) {
         await Comment.findByIdAndDelete(req.params.id);
-        res.status(200).json({ message: "comment has been deleted" });
+        res.status(200).json({ message: "Bình luận đã bị xóa" });
     } else {
-        res.status(403).json({ message: "access denied, not allowed" });
+        res.status(403).json({ message: "Truy cập bị từ chối, không được phép" });
     }
 
  });
@@ -72,11 +72,11 @@ const { User } = require("../models/User");
      const comment = await Comment.findById(req.params.id);
 
      if(!comment) {
-        return res.status(404).json({ message: "comment not found" });
+        return res.status(404).json({ message: "Bình luận không tìm thấy" });
      }
 
      if(req.user.id !== comment.user.toString()) {
-        return res.status(403).json({ message: "access denied, only user himself can edit his comment" });
+        return res.status(403).json({ message: "Quyền truy cập bị từ chối, chỉ người dùng mới có thể chỉnh sửa nhận xét của mình" });
      }
 
      const updateComment = await Comment.findByIdAndUpdate(req.params.id, {

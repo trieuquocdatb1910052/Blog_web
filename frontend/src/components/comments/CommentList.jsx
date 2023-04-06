@@ -22,21 +22,24 @@ const CommentList = ({ comments }) => {
   //Delete Comment Handler
   const deleteCommentHandler = (commentId) => {
     swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this comment!",
+      title: "Bạn có chắc không?",
+      text: "Sau khi xóa, bạn sẽ không thể khôi phục bình luận này!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     }).then((isOk) => {
       if (isOk) {
         dispatch(deleteComment(commentId));
-      } 
+      }
     });
   };
 
   return (
     <div className="comment-list">
-      <h4 className="comment-list-count">{comments?.length} Comments</h4>
+      <h4 className="comment-list-count">
+        {comments?.length}
+        Bình luận
+      </h4>
       {comments?.map((comment) => (
         <div key={comment._id} className="comment-item">
           <div className="comment-item-info">

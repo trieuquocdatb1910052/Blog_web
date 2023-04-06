@@ -17,8 +17,8 @@ const PostsTable = () => {
   //Delete Post Handler
   const deletePostHandler = (postId) => {
     swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this post!",
+      title: "Bạn có chắc không?",
+      text: "Sau khi xóa, bạn sẽ không thể khôi phục bài viết này!!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -33,14 +33,14 @@ const PostsTable = () => {
     <section className="table-container">
       <AdminSidebar />
       <div className="table-wrapper">
-        <h1 className="table-title">Posts</h1>
+        <h1 className="table-title">Bài viết</h1>
         <table className="table">
           <thead>
             <tr>
-              <th>Count</th>
-              <th>User</th>
-              <th>Post Title</th>
-              <th>Action</th>
+              <th>STT</th>
+              <th>Người dùng</th>
+              <th>Tiêu đề bài viết</th>
+              <th>Hành động</th>
             </tr>
           </thead>
           <tbody>
@@ -61,9 +61,9 @@ const PostsTable = () => {
                 <td>
                   <div className="table-button-group">
                     <button>
-                      <Link to={`/posts/details/${item._id}`}>View Post</Link>
+                      <Link to={`/posts/details/${item._id}`}>Xem</Link>
                     </button>
-                    <button onClick={() => deletePostHandler(item._id)}>Delete Post</button>
+                    <button onClick={() => deletePostHandler(item._id)}>Xoá</button>
                   </div>
                 </td>
               </tr>

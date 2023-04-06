@@ -32,7 +32,7 @@ const PostDetails = () => {
   // Update Image Submit Handler
   const updateImageSubmitHandler = (e) => {
     e.preventDefault();
-    if (!file) return toast.warning("No file!");
+    if (!file) return toast.warning("Không có tập tin!");
 
     const formData = new FormData();
     formData.append("image", file);
@@ -44,8 +44,8 @@ const PostDetails = () => {
   //Delete Post Handler
   const deletePostHandler = () => {
     swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this post!",
+      title: "Bạn có chắc không?",
+      text: "Sau khi xóa, bạn sẽ không thể khôi phục bài đăng này!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -71,7 +71,7 @@ const PostDetails = () => {
             className="update-post-image-form"
           >
             <label htmlFor="file" className="update-post-label">
-              <i className="bi bi-image-fill"></i>Select new image
+              <i className="bi bi-image-fill"></i>Chọn hình ảnh mới
             </label>
             <input
               style={{ display: "none" }}
@@ -80,7 +80,7 @@ const PostDetails = () => {
               id="file"
               onChange={(e) => setFile(e.target.files[0])}
             />
-            <button type="submit">Upload</button>
+            <button type="submit">Tải lên</button>
           </form>
         )}
       </div>
@@ -100,12 +100,8 @@ const PostDetails = () => {
       </div>
       <p className="post-details-description">
         {post?.description}
-        You tell me, what’s better—describing the simple car sitting in your
-        all-pavement parking lot, or the one speeding down the interstate? Or
-        perhaps the one slow creeping down a crowded downtown street on a Friday
-        night, heads turning and eyes glued? Or perhaps the one slow creeping
-        down a crowded downtown street on a Friday night, heads turning and eyes
-        glued?
+
+
       </p>
       <div className="post-details-icon-wrapper">
         <div>
@@ -119,7 +115,7 @@ const PostDetails = () => {
               }
             ></i>
           )}
-          <small>{post?.likes.length} likes</small>
+          <small>{post?.likes.length} thích</small>
         </div>
         <div>
           {user?._id === post?.user?._id && (
@@ -136,7 +132,7 @@ const PostDetails = () => {
       {user ? (
         <AddComment postId={post?._id} />
       ) : (
-        <p className="post-details-info-write">to write a comment you should login first</p>
+        <p className="post-details-info-write">Bạn nên đăng nhập trước để viết bình luận</p>
       )}
       <CommentList comments={post?.comments} />
       {updatePost && (

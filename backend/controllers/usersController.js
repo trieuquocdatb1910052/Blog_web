@@ -32,7 +32,7 @@ module.exports.getUserProfileCtrl = asyncHandler(async (req, res) => {
     .select("-password")
     .populate("posts");
   if (!user) {
-    return res.status(404).json({ message: "user not found" });
+    return res.status(404).json({ message: "Người dùng không tìm thấy" });
   }
   res.status(200).json(user);
 });
@@ -89,7 +89,7 @@ module.exports.getUsersCountCtrl = asyncHandler(async (req, res) => {
 module.exports.profilePhotoUploadCtrl = asyncHandler(async (req, res) => {
   //Validation
   if (!req.file) {
-    return res.status(400).json({ message: "no file provided" });
+    return res.status(400).json({ message: "Không có tập tin được cung cấp" });
   }
 
   //Get the path to the image
@@ -115,7 +115,7 @@ module.exports.profilePhotoUploadCtrl = asyncHandler(async (req, res) => {
 
   //Send response to client
   res.status(200).json({
-    message: "your profile photo uploaded successfully",
+    message: "Ảnh hồ sơ của bạn đã được tải lên thành công",
     profilePhoto: { url: result.secure_url, publicId: result.public_id },
   });
 
@@ -133,7 +133,7 @@ module.exports.deleteUserProfileCtrl = asyncHandler(async (req, res) => {
   //Get the user from DB
   const user = await User.findById(req.params.id);
   if (!user) {
-    return res.status(404).json({ message: "user not found" });
+    return res.status(404).json({ message: "Người dùng không tìm thấy" });
   }
 
   // Get all posts from DB
@@ -160,5 +160,5 @@ module.exports.deleteUserProfileCtrl = asyncHandler(async (req, res) => {
   await User.findByIdAndDelete(req.params.id);
 
   //Send a response to the client
-  res.status(200).json({ message: "your profile has been deleted" });
+  res.status(200).json({ message: "Hồ sơ của bạn đã bị xóa" });
 });

@@ -16,10 +16,10 @@ const UpdetePostModal = ({ setUpdatePost, post }) => {
   //Form Submit Handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    if (title.trim() === "") return toast.error("Post Title is required");
-    if (category.trim() === "") return toast.error("Post Category is required");
+    if (title.trim() === "") return toast.error("Tiêu đề bài viết là bắt buộc");
+    if (category.trim() === "") return toast.error("Danh mục bài viết là bắt buộc");
     if (description.trim() === "")
-      return toast.error("Post Description is required");
+      return toast.error("Mô tả bài viết là bắt buộc");
 
     dispatch(updatePost({ title, category, description }, post?._id));
     setUpdatePost(false);
@@ -38,7 +38,7 @@ const UpdetePostModal = ({ setUpdatePost, post }) => {
             className="bi bi-x-circle-fill update-post-form-close"
           ></i>
         </abbr>
-        <h1 className="update-post-title">Update Post</h1>
+        <h1 className="update-post-title">Cập nhật bài viết</h1>
         <input
           type="text"
           className="update-post-input"
@@ -51,7 +51,7 @@ const UpdetePostModal = ({ setUpdatePost, post }) => {
           onChange={(e) => setCategory(e.target.value)}
         >
           <option disabled value="">
-            Select A Category
+          Chọn danh mục bài viết
           </option>
           {categories.map((category) => (
             <option key={category._id} value={category.title}>
@@ -66,7 +66,7 @@ const UpdetePostModal = ({ setUpdatePost, post }) => {
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
         <button type="submit" className="update-post-btn">
-          Update Post
+          CẬP NHẬT
         </button>
       </form>
     </div>

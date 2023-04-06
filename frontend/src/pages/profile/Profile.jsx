@@ -41,7 +41,7 @@ const Profile = () => {
   // Form Submit Handler
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    if (!file) return toast.warning("No file!");
+    if (!file) return toast.warning("Không có tập tin!");
 
     const formData = new FormData();
     formData.append("image", file);
@@ -52,8 +52,8 @@ const Profile = () => {
   // Delete Account Handler
   const deleteAccountHandler = () => {
     swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover profile!",
+      title: "Bạn có chắc không?",
+      text: "Sau khi xóa, bạn sẽ không thể khôi phục hồ sơ!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -109,7 +109,7 @@ const Profile = () => {
                 onChange={(e) => setFile(e.target.files[0])}
               />
               <button className="upload-profile-photo-btn" type="submit">
-                Upload
+              Tải lên
               </button>
             </form>
           )}
@@ -117,7 +117,7 @@ const Profile = () => {
         <h1 className="profile-username">{profile?.username}</h1>
         <p className="profile-bio">{profile?.bio}</p>
         <div className="user-date-joined">
-          <strong>Date Joined: </strong>
+          <strong>Ngày tham gia: </strong>
           <span>{new Date(profile?.createdAt).toDateString()}</span>
         </div>
         {user?._id === profile?._id && (
@@ -126,12 +126,12 @@ const Profile = () => {
             className="profile-update-btn"
           >
             <i className="bi bi-file-person-fill"></i>
-            Update Profile
+            Cập nhật hồ sơ
           </button>
         )}
       </div>
       <div className="profile-posts-list">
-        <h2 className="profile-posts-list-title">{profile?.username} Posts</h2>
+        <h2 className="profile-posts-list-title">{profile?.username} bài viết</h2>
         {profile?.posts?.map((post) => (
           <PostItem
             key={post._id}
@@ -144,7 +144,7 @@ const Profile = () => {
 
       {user?._id === profile?._id && (
         <button onClick={deleteAccountHandler} className="delete-account-btn">
-          Delete Your Account
+        Xóa tài khoản của bạn
         </button>
       )}
 

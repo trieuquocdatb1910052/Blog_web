@@ -8,7 +8,7 @@ const Pagination = ({pages, currentPage, setCurrentPage}) => {
   }
   return (
     <div className="pagination">
-      <button onClick={() => setCurrentPage(current => current - 1)} disabled={currentPage === 1} className="page previous"> Previous</button>
+      <button onClick={() => setCurrentPage(current => current - 1)} disabled={currentPage === 1} className="page previous"> Trước</button>
       {generatedPages.map((page) => (
         <div
           onClick={() => setCurrentPage(page)}
@@ -18,7 +18,7 @@ const Pagination = ({pages, currentPage, setCurrentPage}) => {
           {page}
         </div>
       ))}
-      <button onClick={() => setCurrentPage(current => current + 1)} disabled={currentPage === pages} className="page next">Next</button>
+      <button onClick={() => setCurrentPage(current => current + 1)} disabled={currentPage === pages} className="page next">Sau</button>
     </div>
   );
 };

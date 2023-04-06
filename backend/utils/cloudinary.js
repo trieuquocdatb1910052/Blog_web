@@ -15,7 +15,7 @@ const cloudinaryUploadImage = async(fileToUpload) => {
         return data;
     } catch (error) {
         console.log(error);
-        throw new Error("Internal Server Error (cloudinary)");
+        throw new Error("Lỗi máy chủ nội bộ (đám mây)");
     }
 }
 
@@ -26,7 +26,7 @@ const cloudinaryRemoveImage = async(imagePublicId) => {
         return result;
     } catch (error) {
         console.log(error);
-        throw new Error("Internal Server Error (cloudinary)");
+        throw new Error("Lỗi máy chủ nội bộ (đám mây)");
     }
 }
 
@@ -37,7 +37,7 @@ const cloudinaryRemoveMultipleImage = async(publicIds) => {
         return result;
     } catch (error) {
         console.log(error);
-        throw new Error("Internal Server Error (cloudinary)");
+        throw new Error("Lỗi máy chủ nội bộ (đám mây)");
     }
 }
 

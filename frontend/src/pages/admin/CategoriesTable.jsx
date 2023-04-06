@@ -16,8 +16,8 @@ const CategoriesTable = () => {
   //Delete Category Handler
   const deleteCategoryHandler = (categoryId) => {
     swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this category!",
+      title: "Bạn có chắc không?",
+      text: "Sau khi xóa, bạn sẽ không thể khôi phục danh mục này!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -32,13 +32,13 @@ const CategoriesTable = () => {
     <section className="table-container">
       <AdminSidebar />
       <div className="table-wrapper">
-        <h1 className="table-title">Categories</h1>
+        <h1 className="table-title">Danh mục</h1>
         <table className="table">
           <thead>
             <tr>
-              <th>Count</th>
-              <th>Category Title</th>
-              <th>Action</th>
+              <th>STT</th>
+              <th>Tiêu đề danh mục</th>
+              <th>Hành động</th>
             </tr>
           </thead>
           <tbody>
@@ -51,7 +51,7 @@ const CategoriesTable = () => {
                 <td>
                   <div className="table-button-group">
                     <button onClick={() => deleteCategoryHandler(item._id)}>
-                      Delete Category
+                      Xoá
                     </button>
                   </div>
                 </td>
