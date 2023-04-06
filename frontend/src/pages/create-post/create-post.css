@@ -32,6 +32,7 @@
 }
 
 .create-post-textarea {
+    /* text-align: justify; */
     resize: none;
 }
 
