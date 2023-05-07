@@ -37,7 +37,7 @@ const CommentList = ({ comments }) => {
   return (
     <div className="comment-list">
       <h4 className="comment-list-count">
-        {comments?.length}
+        {comments?.length }
         Bình luận
       </h4>
       {comments?.map((comment) => (

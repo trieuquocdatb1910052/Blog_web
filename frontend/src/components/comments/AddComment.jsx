@@ -21,7 +21,7 @@ const AddComment = ({ postId }) => {
     <form onSubmit={formSubmitHandler} className="add-comment">
       <input
         type="text"
-        placeholder="Add a comment"
+        placeholder="Nhập bình luận"
         className="add-comment-input"
         value={text}
         onChange={(e) => setText(e.target.value)}

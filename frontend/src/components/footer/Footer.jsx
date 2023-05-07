@@ -1,7 +1,7 @@
 const Footer = () => {
     return ( 
         <footer style={styles}>
-            Copyright 2023 &copy;
+            Copyright 2023 &copy; Trieu Quoc Dat
         </footer>
     );
 }

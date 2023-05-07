@@ -34,7 +34,7 @@ function verifyTokenAndOnlyUser(req, res, next) {
         if(req.user.id === req.params.id) {
             next();
         } else {
-            return res.status(403).json({ message: "Không được phép, chỉ người dùng mình" });
+            return res.status(403).json({ message: "Không được phép, chỉ người dùng thành viên" });
         }
     });
 }
@@ -45,7 +45,7 @@ function verifyTokenAndAuthorization(req, res, next) {
         if(req.user.id === req.params.id || req.user.isAdmin) {
             next();
         } else {
-            return res.status(403).json({ message: "Không được phép, chỉ người dùng hoặc quản trị viên" });
+            return res.status(403).json({ message: "Không được phép, chỉ người dùng thành viên hoặc quản trị viên" });
         }
     });
 }
